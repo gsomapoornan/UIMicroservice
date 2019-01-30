@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+
+
+</head>
+
+<body>
+<h1><img src="images/visualpath.png"/> &nbsp; E-Commerce</h1>
+
+
+<div style="text-align:center;">
+    <h1><div style="display:inline-block;">User ID:</div>
+    <div id="userID" style="display:inline-block;"></div></h1>
+</div>
+<div style="text-align:center;">
+    <h1><div style="display:inline-block;">User Name:</div>
+    <div id="userName" style="display:inline-block;"></div></h1>
+</div> 
+<div style="text-align:center;">
+    <h1><div style="display:inline-block;">User Address:</div>
+    <div id="userAddress" style="display:inline-block;"></div></h1>
+</div>   
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict()(function ($) { 
+$(document).ready(function(){
+	 console.log("In selfprofile");
+	
+	
+   $.getJSON("http://localhost:9090/user/100", function(user){ 
+	  
+         $("#userID").append(user.id);
+         $("#userName").append(user.name);
+         $("#userAddress").append(user.address);
+      
+   });
+});
+});
+</script>
+
+</body>
+</html>

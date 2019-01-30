@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+
+.homeElement{  
+	width:200px;
+	border: 1px solid #eee;
+    display:inline-block;
+    margin:10px;
+    box-shadow:0 2px 2px#ccc;  
+    text-align: center;
+  }
+  #addForm {
+  display: none;
+}

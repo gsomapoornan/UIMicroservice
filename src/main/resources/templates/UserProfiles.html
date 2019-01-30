@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+
+
+</head>
+
+<body>
+<h1><img src="images/visualpath.png"/> &nbsp; E-Commerce</h1>
+
+<h3>
+<ul></ul>
+</h3>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict()(function ($) { 
+$(document).ready(function(){
+	 console.log("In selfprofile");
+	 var mySearch= {
+		       name:document.getElementById("name"),
+		       address:"Hyderabad"
+		    };
+	
+	
+   $.getJSON("http://localhost:9090/userbynamecity",mySearch,function(data){
+	   
+	   $.each(data, function(){
+		  	         $("ul").append("<li>Id: "+this['id']+"</li><li>Name: "+this['name']+"</li> <li>Address: "+this['address']+
+	        		 "</li><br />");
+	   });
+});
+});
+});
+</script>
+
+</body>
+</html>

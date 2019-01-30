@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+
+<meta charset="ISO-8859-1">
+<link href="css/styles.css" rel="stylesheet" />
+<title>Profiles Page</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	
+</script>
+<script type="text/javascript">
+	function enableForm() {
+		console.log("i am in");
+		$("#addForm").toggle();
+	}
+</script>
+</head>
+<body>
+
+	<h1>
+		<img src="images/visualpath.png" /> &nbsp; E-Commerce
+	</h1>
+	<table>
+		<tr>
+			<td><a class="button" href="/self-profile">
+					<div class="homeElement">
+						<h3>Access Self Account</h3>
+					</div>
+			</a></td>
+		</tr>
+		<tr>
+			<td><a href="#" id="showForm" class="button homeElement"
+				onClick="enableForm()">
+					<h3>Access User Accounts By Name & City</h3>
+			</a></td>
+		</tr>
+	</table>
+	
+	<table id="addForm" style="display: none">
+
+		<tr>
+
+			
+			<td>Enter Name:</td>
+			<td><input id="name" type="text" /></td>
+		</tr>
+		<tr>
+			<td>Enter City:</td>
+			<td><input id="city" type="text" /></td>
+		<tr>
+		<tr>
+			<td><a class="button" href="/user-search"><button>submit</button></a>
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
