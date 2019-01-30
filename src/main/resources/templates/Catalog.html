@@ -16,6 +16,7 @@
 </h3>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+
 jQuery.noConflict()(function ($) { 
 $(document).ready(function(){
 	 
@@ -25,14 +26,34 @@ $(document).ready(function(){
 	   
 	   $.each(data, function(){
 		  	         $("ul").append("<li>Id: "+this['id']+"</li><li>Name: "+this['name']+"</li> <li>Price :$"+this['price']+
-	        		 "</li><button onclick=\"cart()\">addTocart</button><br/>");
+	        		 "</li><button onclick=\"add"+this['name']+"()\">addTocart</button><br/>");
 	   });
 });
 });
 });
-function cart(){
-	console.log("I am in cart");
-	page.
+function addLaptop(){
+	jQuery.noConflict()(function ($) {
+	$.post("http://localhost:9092/createOrder?userId=100&productId=10",function(){
+	alert("Added Laptop to your cart ");
+	});
+	});
+	
+}
+function addMobile(){
+	jQuery.noConflict()(function ($) {
+		$.post("http://localhost:9092/createOrder?userId=100&productId=20",function(){
+		alert("Added Mobile to your cart ");
+		});
+		});
+	
+}
+function addWatch(){
+	jQuery.noConflict()(function ($) {
+		$.post("http://localhost:9092/createOrder?userId=100&productId=30",function(){
+		alert("Added Watch to your cart ");
+		});
+		});
+	
 }
 </script>
 

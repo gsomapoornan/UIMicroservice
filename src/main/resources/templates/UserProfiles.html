@@ -20,14 +20,14 @@ jQuery.noConflict()(function ($) {
 $(document).ready(function(){
 	 console.log("In selfprofile");
 	 var mySearch= {
-		       name:document.getElementById("name"),
+		       name:"Noel",
 		       address:"Hyderabad"
 		    };
 	
 	
-   $.getJSON("http://localhost:9090/userbynamecity",mySearch,function(data){
+   $.getJSON("http://localhost:9090/userbynamecity?",mySearch,function(user){
 	   
-	   $.each(data, function(){
+	   $.each(user, function(){
 		  	         $("ul").append("<li>Id: "+this['id']+"</li><li>Name: "+this['name']+"</li> <li>Address: "+this['address']+
 	        		 "</li><br />");
 	   });

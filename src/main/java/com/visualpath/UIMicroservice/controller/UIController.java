@@ -25,6 +25,10 @@ public class UIController {
    public String catalogPage() {
       return "catalog";
    }
+   @RequestMapping(value = "/showCart")
+   public String cartPage() {
+      return "cart";
+   }
    
   /* @GetMapping("/searchuser")
    public String searchuserForm(Model model) {

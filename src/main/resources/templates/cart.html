@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Visualpath Cart</title>
+
+
+
+</head>
+
+<body>
+<h1><img src="images/visualpath.png"/> &nbsp; E-Commerce</h1>
+
+<h3>
+<ul></ul>
+</h3>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+jQuery.noConflict()(function ($) {
+$(document).ready(function(){	
+   $.getJSON("http://localhost:9092/showCart/100",function(data){
+	   console.log(data);
+	   
+	   var htmlText = '';
+	   htmlText += '<h1> Address </h1>';
+	       htmlText += '<h3>';
+           htmlText += '<div class="div-conatiner">';
+           htmlText += '<p> Name: ' + data["name"] + '</p>';
+           htmlText += '<p> Address: ' + data["address"] + '</p>';
+           htmlText += '<h1>Products List </h1>';
+           for ( var key in data["prodList"] ) {
+        	   htmlText +="<ul>";
+        	   htmlText +="<li>"+data["prodList"][key].name+"</li>";
+        	   htmlText +="<li>"+data["prodList"][key].price+"</li>";
+        	   htmlText +="</ul>";
+        	   
+           }
+           htmlText += '<p> OrderTotal: ' + data["orderTotal"] + '</p>';
+          htmlText += '</div>';
+          htmlText += '</h3>';
+  
+       $('body').append(htmlText);
+	  		});
+		});
+	
+});
+</script>
+
+</body>
+</html>
