@@ -27,6 +27,8 @@ public class UIController {
    }
    @RequestMapping(value = "/showCart")
    public String cartPage() {
+	   
+	   
       return "cart";
    }
    

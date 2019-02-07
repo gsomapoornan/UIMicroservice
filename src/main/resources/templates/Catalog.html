@@ -22,7 +22,7 @@ $(document).ready(function(){
 	 
 	
 	
-   $.getJSON("http://localhost:9091/products",function(data){
+   $.getJSON("http://localhost:9095/products",function(data){
 	   
 	   $.each(data, function(){
 		  	         $("ul").append("<li>Id: "+this['id']+"</li><li>Name: "+this['name']+"</li> <li>Price :$"+this['price']+
