@@ -22,7 +22,7 @@ $(document).ready(function(){
 	 
 	
 	
-   $.getJSON("http://localhost:9095/products",function(data){
+   $.getJSON("http://localhost:9094/products",function(data){
 	   
 	   $.each(data, function(){
 		  	         $("ul").append("<li>Id: "+this['id']+"</li><li>Name: "+this['name']+"</li> <li>Price :$"+this['price']+
@@ -57,5 +57,25 @@ function addWatch(){
 }
 </script>
 
+<div class="col-xs-12">
+<h4>Feched prod details using Feign & Thymeleaf</h4>
+    <table id="prod" class="table table-hover table-bordered table-striped table-condensed">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+                    </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prod : ${prodList}">
+            <td th:text="${prod.id}"></td>
+            <td th:text="${prod.name}"></td>
+            <td th:text="${prod.price}"></td>
+           <td><button>addtocart</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div> 
 </body>
 </html>

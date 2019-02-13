@@ -1,29 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+
 <title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 
-
-
-</head>
-
-<body>
-<h1><img src="images/visualpath.png"/> &nbsp; E-Commerce</h1>
-
-
-<div style="text-align:center;">
-    <h1><div style="display:inline-block;">User ID:</div>
-    <div id="userID" style="display:inline-block;"></div></h1>
-</div>
-<div style="text-align:center;">
-    <h1><div style="display:inline-block;">User Name:</div>
-    <div id="userName" style="display:inline-block;"></div></h1>
-</div> 
-<div style="text-align:center;">
-    <h1><div style="display:inline-block;">User Address:</div>
-    <div id="userAddress" style="display:inline-block;"></div></h1>
-</div>   
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -42,6 +25,46 @@ $(document).ready(function(){
 });
 });
 </script>
+
+
+
+</head>
+
+<body>
+<h3><img src="images/visualpath.png"/> &nbsp; E-Commerce</h3>
+
+<div>
+<h2>Fetched User Profile By Rest call through Jquery Lib</h2>
+<div style="text-align:center;">
+    <h3><div style="display:inline-block;">User ID:</div>
+    <div id="userID" style="display:inline-block;"></div></h3>
+</div>
+<div style="text-align:center;">
+    <h3><div style="display:inline-block;">User Name:</div>
+    <div id="userName" style="display:inline-block;"></div></h3>
+</div> 
+<div style="text-align:center;">
+    <h3><div style="display:inline-block;">User Address:</div>
+    <div id="userAddress" style="display:inline-block;"></div></h3>
+</div>   
+</div>
+ <div>
+<h2>Fetched User Profile By Rest call Using Eureka, Feign, Thymeleaf Libs</h2>
+<div style="text-align:center;">
+    <h3><div style="display:inline-block;">User ID:</div>
+    <div th:text="${user1.id}" style="display:inline-block;"></div></h3>
+</div>
+<div style="text-align:center;">
+    <h3><div style="display:inline-block;">User Name:</div>
+    <div th:text="${user1.name}"  style="display:inline-block;"></div></h3>
+</div> 
+<div style="text-align:center;">
+    <h3><div style="display:inline-block;">User Address:</div>
+    <div th:text="${user1.address}" style="display:inline-block;"></div></h3>
+</div>   
+</div>
+
+
 
 </body>
 </html>
