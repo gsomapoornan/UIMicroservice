@@ -9,6 +9,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +27,22 @@ public class UIController {
 	@Autowired
 	UIService uiService;
 	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("errorMsg", "Your username and password are invalid.");
+
+        if (logout != null)
+            model.addAttribute("msg", "You have been logged out successfully.");
+
+        return "login";
+}
 		
-   @RequestMapping(value = "/index")
+   @RequestMapping(value = "/welcome")
    public String index() {
-      return "index";
+      return "welcome";
    }
+   //@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
    @RequestMapping(value = "/user-accounts")
    public String showProfilesPage() {
       return "admin";
@@ -42,15 +54,15 @@ public class UIController {
 	   System.out.println("*****"+user.getName());
       return "selfprofile";
    }
+   
    @RequestMapping(value = "/user-search")
+   @PreAuthorize("hasAuthority('ROLE_ADMIN')")
    public String userSearchPage() {
       return "userprofiles";
    }
    @RequestMapping(value = "/catalog")
    public String catalogPage(Model model) {
-	   List<Product> prodList=uiService.getProducts();
-	  
-	   
+	   List<Product> prodList=uiService.getProducts();	   
 	   model.addAttribute("prodList", prodList);
       return "catalog";
    }

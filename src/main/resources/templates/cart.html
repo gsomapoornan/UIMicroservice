@@ -23,11 +23,11 @@ $(document).ready(function(){
 	   console.log(data);
 	   
 	   var htmlText = '';
-	   htmlText += '<h1> Address </h1>';
+	   htmlText += '<h1> password </h1>';
 	       htmlText += '<h3>';
            htmlText += '<div class="div-conatiner">';
            htmlText += '<p> Name: ' + data["name"] + '</p>';
-           htmlText += '<p> Address: ' + data["address"] + '</p>';
+           htmlText += '<p> password: ' + data["password"] + '</p>';
            htmlText += '<h1>Products List </h1>';
            for ( var key in data["prodList"] ) {
         	   htmlText +="<ul>";

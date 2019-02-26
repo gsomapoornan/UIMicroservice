@@ -28,7 +28,7 @@ $(document).ready(function(){
    $.getJSON("http://localhost:9090/userbynamecity?",mySearch,function(user){
 	   
 	   $.each(user, function(){
-		  	         $("ul").append("<li>Id: "+this['id']+"</li><li>Name: "+this['name']+"</li> <li>Address: "+this['address']+
+		  	         $("ul").append("<li>Id: "+this['id']+"</li><li>Name: "+this['name']+"</li> <li>address: "+this['address']+
 	        		 "</li><br />");
 	   });
 });
