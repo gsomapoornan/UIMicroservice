@@ -5,11 +5,15 @@
       <link href = "css/styles.css" rel = "stylesheet"/>
       <title>Visualpath Application</title>
 </head>
+
 <body>
+
+
 <div align="right">
  <a th:href="@{/logout}">Sign Out</a>
  </div>
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<h1 th:inline="text">Hello <div th:text="${name}" style="display:inline-block;"></div>!!</h1>
 <h1>Welcome to <img src="images/visualpath.png"/> &nbsp; E-Commerce </h1>
 <div class="container" style="align-items: center">
 

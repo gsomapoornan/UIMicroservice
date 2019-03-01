@@ -10,7 +10,7 @@ import com.visualpath.UIMicroservice.Model.User;
 
 @FeignClient(name="${visualpath.apigateway}",fallback = UserClientFallback.class)
 public interface UserRemoteCallService {
-	@RequestMapping(method=RequestMethod.GET, value="users/user/{Id}")
+	@RequestMapping(method=RequestMethod.GET, value="/users/user/{Id}")
 	public User getUserByID(@PathVariable("Id") Long userId);
 
 }

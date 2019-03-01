@@ -13,16 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
-@XmlRootElement
 @Table(name="AUTHUSER")
 public class Authuser {
 	@Id
@@ -38,9 +31,10 @@ public class Authuser {
 			inverseJoinColumns = @JoinColumn(name = "ROLE_ID", unique=false))
 			@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 			@LazyCollection(LazyCollectionOption.FALSE)*/
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinTable(name="USER_ROLE",joinColumns= {@JoinColumn(name="USER_ID",referencedColumnName = "USER_ID")},
-			inverseJoinColumns = {@JoinColumn( name="ROLE_ID",referencedColumnName = "ROLE_ID")})	
+	 @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	 @JoinTable(name = "USER_ROLE", joinColumns = {
+	   @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID") }, inverseJoinColumns = {
+	     @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID") })	
 	private Set<Role> roles;
 	
 	
@@ -99,6 +93,7 @@ public class Authuser {
 	@LazyCollection(LazyCollectionOption.FALSE)*/
 	public Set<Role> getRoles() {
 		
+		//return roles;
 		Set<Role> tempSet=new HashSet<Role>();
 		tempSet.add(new Role(1,"user"));
 		return tempSet;

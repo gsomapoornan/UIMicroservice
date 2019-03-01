@@ -14,7 +14,27 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@Autowired
+	@Override
+    protected void configure(HttpSecurity http) throws Exception {
+        
+		http.authorizeRequests().anyRequest().authenticated()
+                .and()
+                .oauth2Login().defaultSuccessUrl("/welcome");
+        
+        /*http.authorizeRequests()
+        .antMatchers("/login")
+        .permitAll()
+        .anyRequest()
+        .authenticated()
+        .and()
+        .oauth2Login()
+        .loginPage("/login")
+        .defaultSuccessUrl("/welcome");
+                */
+    }
+
+	
+	/*@Autowired
 	private AuthUserDetailsService authUserDetailsService;
 	
     @Override
@@ -24,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/images/**").permitAll()
             .antMatchers("/css/**").permitAll()
             .antMatchers("/h2-console/**").permitAll()
-           // .antMatchers("/user-search").hasAnyRole("ADMIN")         
+            //.antMatchers("/user-search").hasAnyRole("ADMIN")         
             //.anyRequest().permitAll();
             .anyRequest().authenticated()
             //.and().httpBasic();
@@ -41,10 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-      /* auth
+       auth
           .inMemoryAuthentication()
           .withUser("user").password("{noop}password").roles("USER").and()
-          .withUser("admin").password("{noop}admin").roles("ADMIN");*/
+          .withUser("admin").password("{noop}admin").roles("ADMIN");
     	auth.
     	userDetailsService(authUserDetailsService).
         passwordEncoder(getPasswordEncoder());
@@ -69,5 +89,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			}
 			
 		};
-	}
+	}*/
 }
